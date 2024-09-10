@@ -37,7 +37,7 @@ const Login = () => {
             {"Don't"} have an account?{" "}
             <a
               href="#"
-              className="text-sm hover:underline hover:text-teal-500 inline-block"
+              className="text-sm hover:underline text-teal-500 inline-block"
             >
               Sign Up
             </a>

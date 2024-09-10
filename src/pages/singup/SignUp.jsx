@@ -48,7 +48,7 @@ const SignUp = () => {
 
           <div>
             <button className="btn-block border rounded-md pt-1.5 pb-2 font-bold hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
-              Login
+              Sign Up
             </button>
           </div>
           <p className="mt-2">
