@@ -39,7 +39,7 @@ const Login = () => {
               href="#"
               className="text-sm hover:underline hover:text-teal-500 inline-block"
             >
-              Register
+              Sign Up
             </a>
           </p>
         </form>
@@ -49,3 +49,4 @@ const Login = () => {
 };
 
 export default Login;
+
