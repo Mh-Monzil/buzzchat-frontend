@@ -1,9 +1,12 @@
+import MessageContainer from "../../components/messages/MessageContainer";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 
 const Home = () => {
     return (
-        <div>
-            Home
+        <div className="flex max-h-[800px] border rounded-lg">
+            <Sidebar />
+            <MessageContainer />
         </div>
     );
 };
