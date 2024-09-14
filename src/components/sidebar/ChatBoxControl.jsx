@@ -1,8 +1,10 @@
 import { BiLogOut } from "react-icons/bi";
 import useAuth from "../../hooks/useAuth";
+import useLogout from "../../hooks/useLogout";
 
 const ChatBoxControl = () => {
   const {user} = useAuth();
+  const {logout} = useLogout()
   console.log(user);
   return (
     <div className="flex items-center justify-between mt-6">
@@ -20,7 +22,7 @@ const ChatBoxControl = () => {
         </div>
       </div>
       <button
-        type="submit"
+        onClick={logout}
         className="btn btn-circle bg-transparent border-none hover:bg-[#111] flex items-center justify-center"
       >
         <BiLogOut className="w-6 h-6 outline-none" />
