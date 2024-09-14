@@ -5,20 +5,20 @@ import useLogout from "../../hooks/useLogout";
 const ChatBoxControl = () => {
   const {user} = useAuth();
   const {logout} = useLogout()
-  console.log(user);
+
   return (
     <div className="flex items-center justify-between mt-6">
       <div className="flex items-center gap-4">
         <div className="avatar">
-          <div className="w-10 rounded-full">
+          <div className="w-12 rounded-full">
             <img
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              src={user.profilePic}
               alt=""
             />
           </div>
         </div>
-        <div className="text-sm">
-            <p className="font-semibold">Mh Monzil</p>
+        <div className="text">
+            <p className="font-semibold">{user.fullName}</p>
         </div>
       </div>
       <button
