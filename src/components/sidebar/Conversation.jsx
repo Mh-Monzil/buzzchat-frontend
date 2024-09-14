@@ -1,23 +1,36 @@
-const Conversation = () => {
+import PropTypes from 'prop-types';
+import useConversation from '../../store/useConversation';
+
+const Conversation = ({ conversation, lastIdx }) => {
+  const { fullName, profilePic, _id } = conversation;
+
+  const {selectedConversation, setSelectedConversation} = useConversation();
+  const isSelected = selectedConversation?._id === _id;
+
   return (
     <>
-      <div className="flex gap-2 items-center hover:bg-gray-800 rounded px-1 py-2 cursor-pointer">
+      <div onClick={() => setSelectedConversation(conversation)} className={`flex gap-2 items-center hover:bg-gray-800 rounded px-1 py-2 cursor-pointer ${isSelected ? "bg-[#111]" : ""}`}>
         <div className="avatar online">
           <div className="w-12 rounded-full">
             <img
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              src={profilePic}
               alt=""
             />
           </div>
         </div>
         <div className="flex flex-col flex-1">
-            <p className="font-bold text-gray-200">Mh Monzil</p>
-            <p>Last msg</p>
+          <p className="font-bold text-gray-200">{fullName}</p>
+          <p>Last msg</p>
         </div>
       </div>
-      <div className="divider my-0 py-0 h-1"></div>
+      {!lastIdx && <div className="divider my-0 py-0 h-1"></div>}
     </>
   );
 };
+
+Conversation.propTypes = {
+  conversation: PropTypes.object,
+  lastIdx: PropTypes.bool,
+}
 
 export default Conversation;
