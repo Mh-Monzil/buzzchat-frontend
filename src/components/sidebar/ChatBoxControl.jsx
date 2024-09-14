@@ -1,6 +1,9 @@
 import { BiLogOut } from "react-icons/bi";
+import useAuth from "../../hooks/useAuth";
 
 const ChatBoxControl = () => {
+  const {user} = useAuth();
+  console.log(user);
   return (
     <div className="flex items-center justify-between mt-6">
       <div className="flex items-center gap-4">
