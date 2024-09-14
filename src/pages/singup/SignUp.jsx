@@ -4,7 +4,7 @@ import { useState } from "react";
 import useSignUp from "../../hooks/useSignUp";
 
 const SignUp = () => {
-  const { signUp } = useSignUp();
+  const { signUp, loading } = useSignUp();
   const [inputs, setInputs] = useState({
     fullName: "",
     username: "",
@@ -98,8 +98,8 @@ const SignUp = () => {
           />
 
           <div>
-            <button className="btn-block border rounded-md pt-1.5 pb-2 font-bold hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
-              Sign Up
+            <button disabled={loading} className="btn-block border rounded-md pt-1.5 pb-2 font-bold hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
+              {loading ? <span className="loading loading-spinner"></span> : "Sign Up"}
             </button>
           </div>
           <p className="mt-2">
