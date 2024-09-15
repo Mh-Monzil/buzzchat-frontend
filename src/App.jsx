@@ -7,7 +7,7 @@ import useAuth from "./hooks/useAuth";
 const App = () => {
   const {user} = useAuth();
   return (
-    <div className="bg-[#1C1C1C] h-screen w-full p-4 flex items-center justify-center">
+    <div className="bg-[#1C1C1C] h-screen w-full flex items-center justify-center">
       <Routes>
         <Route path="/" element={user ?  <Home /> : <Navigate to="/login" />} />
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />

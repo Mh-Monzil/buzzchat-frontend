@@ -13,7 +13,7 @@ const MessageContainer = () => {
   }, [setSelectedConversation]);
 
   return (
-    <div className="md:min-w-[550px] flex flex-col">
+    <div className="w-full flex flex-col ">
       {!selectedConversation ? (
         <div className="flex items-center justify-center w-full h-full">
           <div className="px-4 text-center sm:text-lg md:text-2xl text-gray-200 font-semibold flex flex-col items-center gap-2">
@@ -24,18 +24,18 @@ const MessageContainer = () => {
         </div>
       ) : (
         <>
-          <div className="flex items-center justify-between border-b px-4 py-3">
+          <div className="flex items-center justify-between border-b-[1px] border-zinc-700 px-4 py-3">
             <div className="flex items-center gap-4">
               <div className="avatar">
                 <div className="w-10 rounded-full">
                   <img
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={selectedConversation.profilePic}
                     alt=""
                   />
                 </div>
               </div>
               <div className="text-sm">
-                <p className="font-semibold">Mh Monzil</p>
+                <p className="font-semibold">{selectedConversation.fullName}</p>
               </div>
             </div>
             <button
