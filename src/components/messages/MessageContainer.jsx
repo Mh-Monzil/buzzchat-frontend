@@ -1,13 +1,20 @@
+import { useEffect } from "react";
+import useConversation from "../../store/useConversation";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import { SlOptions } from "react-icons/sl";
 import { TiMessages } from "react-icons/ti";
 
 const MessageContainer = () => {
-  const noChatSelected = false;
+  const { selectedConversation, setSelectedConversation } = useConversation();
+
+  useEffect(() => {
+    return () => setSelectedConversation(null)
+  }, [setSelectedConversation]);
+
   return (
     <div className="md:min-w-[550px] flex flex-col">
-      {noChatSelected ? (
+      {!selectedConversation ? (
         <div className="flex items-center justify-center w-full h-full">
           <div className="px-4 text-center sm:text-lg md:text-2xl text-gray-200 font-semibold flex flex-col items-center gap-2">
             <p>Welcome to BuzzChat</p>
