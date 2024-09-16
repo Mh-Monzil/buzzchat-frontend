@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import useGetMessages from "../../hooks/useGetMessages";
 import useConversation from "../../store/useConversation";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
@@ -6,7 +7,14 @@ import Message from "./Message";
 const Messages = () => {
   const { selectedConversation } = useConversation();
   const { messages, loading } = useGetMessages();
-  console.log("messages", messages);
+  const lastMessageRef = useRef();
+
+  useEffect(() => {
+    setTimeout(() => {
+      lastMessageRef.current?.scrollIntoView({ behavior: "auto" });
+    }, 1);
+  }, [messages]);
+
   return (
     <div className="p-4 flex-1 overflow-auto custom-scrollbar">
       {loading && [...Array(3)].map((_, idx) => <MessageSkeleton key={idx} />)}
@@ -27,7 +35,11 @@ const Messages = () => {
 
       {!loading &&
         messages.length > 0 &&
-        messages.map((message, idx) => <Message key={idx} message={message} />)}
+        messages.map((message, idx) => (
+          <div key={idx} ref={lastMessageRef}>
+            <Message message={message} />
+          </div>
+        ))}
     </div>
   );
 };

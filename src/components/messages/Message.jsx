@@ -1,5 +1,6 @@
 import useAuth from "../../hooks/useAuth";
 import useConversation from "../../store/useConversation";
+import { extractTime } from "../../utils/extractTime";
 
 const Message = ({message}) => {
 const {user} = useAuth();
@@ -8,6 +9,7 @@ const myMessage = message?.senderId === user?._id;
 const textPoint = myMessage ? "chat-end" : "chat-start";
 const profilePic = myMessage ? user.profilePic : selectedConversation.profilePic;
 const textBgColor = myMessage ? "bg-teal-700" : "bg-zinc-800";
+const time = extractTime(message.createdAt);
 
   return (
     <div className={`chat ${textPoint}`}>
@@ -19,10 +21,10 @@ const textBgColor = myMessage ? "bg-teal-700" : "bg-zinc-800";
           />
         </div>
       </div>
-      <div className={`chat-bubble text-white text-lg ${textBgColor}`}>
+      <div className={`max-w-[60%] chat-bubble text-white text-lg ${textBgColor}`}>
         {message?.message}
       </div>
-      <div className="chat-footer opacity-50 flex gap-1 items-center">10:10</div>
+      <div className="chat-footer opacity-50 flex gap-1 items-center text-[12px]">{time}</div>
     </div>
   );
 };
