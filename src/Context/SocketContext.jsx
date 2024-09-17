@@ -23,14 +23,17 @@ const SocketContextProvider = ({ children }) => {
         setOnlineUsers(users);
       });
 
-      return () => socket.close();
+      return () => {
+        socket.close();
+        setSocket(null);
+      };
     } else {
       if (socket) {
         socket.close();
         setSocket(null);
       }
     }
-  }, []);
+  }, [user]);
 
   const SocketInfo = { socket, onlineUsers };
   return (
